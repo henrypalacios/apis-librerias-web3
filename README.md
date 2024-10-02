@@ -2,12 +2,11 @@
 
 ## 📝 Descripción
 
-Esta aplicación React permite interactuar con un contrato inteligente Counter desarrollado en Ink! en la red Polkadot. Utiliza PolkadotJS para establecer conexiones y gestionar cuentas.
+Esta aplicación React permite interactuar con un contrato inteligente Counter desarrollado en Ink! en la red basada en Polkadot SDK. Utiliza PolkadotJS para establecer conexiones y gestionar cuentas.
 
 ## 🚀 Características
 
 - 🔗 Conexión a la red Polkadot
-- 👛 Gestión de cuentas de usuario
 - 🔢 Interacción con el contrato Counter (incrementar, decrementar, reiniciar)
 - 💼 Visualización del valor del contador
 - 🔄 Conexión/desconexión de wallet
