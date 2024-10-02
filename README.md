@@ -1,14 +1,15 @@
-# 🦑 Aplicación de Interacción con Contratos Inteligentes Ink! en Polkadot
+# 🦑 Aplicación Counter DApp con Ink! en Polkadot
 
 ## 📝 Descripción
 
-Esta aplicación React permite interactuar con contratos inteligentes Ink! en la red Polkadot. Utiliza tanto PolkadotJS como la biblioteca `useInkathon` para establecer conexiones y gestionar cuentas.
+Esta aplicación React permite interactuar con un contrato inteligente Counter desarrollado en Ink! en la red Polkadot. Utiliza PolkadotJS para establecer conexiones y gestionar cuentas.
 
 ## 🚀 Características
 
 - 🔗 Conexión a la red Polkadot
 - 👛 Gestión de cuentas de usuario
-- 💼 Visualización de saldos
+- 🔢 Interacción con el contrato Counter (incrementar, decrementar, reiniciar)
+- 💼 Visualización del valor del contador
 - 🔄 Conexión/desconexión de wallet
 
 ## 🛠️ Tecnologías utilizadas
@@ -17,41 +18,67 @@ Esta aplicación React permite interactuar con contratos inteligentes Ink! en la
 - TypeScript 📘
 - Vite ⚡
 - PolkadotJS 🕸️
-- useInkathon 🦑
 
 ## 🏗️ Estructura del proyecto
 
 ```sh
-polkadot-ink-app/
+counter-web3-example/
 ├── src/
 │ ├── components/
-│ │ ├── PolkadotJSConnection.tsx
-│ │ └── UseInkathonConnection.tsx
-│ └── App.tsx
-└── package.json
+│ │ ├── CounterCard/
+│ │ │ └── index.tsx
+│ │ └── ui/
+│ │ ├── Button.tsx
+│ │ ├── Card.tsx
+│ │ └── ConnectionStatus.tsx
+│ ├── constants.ts
+│ ├── App.tsx
+│ └── styles.css
+├── contracts/
+│ └── ink/
+│ └── counter/
+│ └── target/
+│ └── ink/
+│ └── counter.json
+├── package.json
+└── .env.example
 ```
 
 ## 📚 Componentes principales
 
 ### App.tsx
 
-Este es el componente principal que envuelve toda la aplicación con el proveedor `UseInkathonProvider` y renderiza los componentes `PolkadotJSConnection` y `UseInkathonConnection`.
+Este es el componente principal que renderiza el `CounterCard`.
 
-### PolkadotJSConnection
+### CounterCard/index.tsx
 
-Este componente establece una conexión con la red Polkadot utilizando PolkadotJS y muestra información básica sobre la conexión y las cuentas disponibles.
+Este componente maneja la conexión con la red Polkadot, la interacción con el contrato Counter y la interfaz de usuario para incrementar, decrementar y reiniciar el contador.
 
-### UseInkathonConnection
+## 🔧 Variables importantes
 
-Este componente utiliza la biblioteca `useInkathon` para gestionar la conexión de la wallet y mostrar información de la cuenta y el saldo.
+En el archivo `src/components/CounterCard/index.tsx`, hay tres variables cruciales que debes configurar correctamente:
+
+- `CONTRACT_ADDRESS`: La dirección del contrato Counter desplegado en la red.
+- `CONTRACT_ABI`: El ABI del contrato, que se importa desde el archivo JSON generado al compilar el contrato.
+- `WS_PROVIDER`: La URL del proveedor WebSocket para conectarse a la red Polkadot.
+
+Para editar estas variables:
+
+1. Actualiza `CONTRACT_ADDRESS` con la dirección de tu contrato desplegado.
+2. Asegúrate de que el archivo `counter.json` esté en la ruta correcta y contenga el ABI actualizado.
+3. Configura `VITE_WS_PROVIDER` en tu archivo `.env` o modifica el valor por defecto en el código.
 
 ## 🚦 Cómo empezar
 
 1. Clona el repositorio
 2. Instala las dependencias con `npm install`
-3. Inicia la aplicación con `npm run dev`
-4. Abre tu navegador y visita `http://localhost:5173`
+3. (Opcional, para usar deploy.ts) Copia el archivo `.env.example` a `.env` y configura la variable `VITE_WS_PROVIDER` con la dirección de tu nodo Polkadot
+4. Asegúrate de que el archivo `counter.json` esté presente en la carpeta `contracts/ink/counter/target/ink/`
+5. Actualiza `CONTRACT_ADDRESS` en `src/components/CounterCard/index.tsx` con la dirección de tu contrato desplegado
+6. Inicia la aplicación con `npm run dev`
+7. Abre tu navegador y visita `http://localhost:5173`
 
-## 🤝 Contribuciones
+## 📝 Notas importantes
 
-Las contribuciones son bienvenidas. Por favor, abre un issue o realiza un pull request para sugerir cambios o mejoras.
+- Asegúrate de tener una extensión de wallet de Polkadot (como PolkadotJS) instalada en tu navegador para interactuar con la DApp.
+- El contrato Counter debe estar desplegado en la red que estés utilizando. Asegúrate de actualizar la dirección del contrato y el proveedor WebSocket según corresponda.
