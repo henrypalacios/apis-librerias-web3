@@ -33,12 +33,13 @@ counter-web3-example/
 │ ├── constants.ts
 │ ├── App.tsx
 │ └── styles.css
-├── contracts/
-│ └── ink/
-│ └── counter/
-│ └── target/
-│ └── ink/
-│ └── counter.json
+├── contracts
+│ └── ink
+│   └── counter
+│     ├── Cargo.lock
+│     ├── Cargo.toml
+│     ├── lib.rs
+│     └── tests.rs
 ├── package.json
 └── .env.example
 ```
